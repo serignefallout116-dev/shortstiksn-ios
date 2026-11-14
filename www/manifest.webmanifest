@@ -1,0 +1,16 @@
+{
+  "name": "SHORTSTIKSN",
+  "short_name": "SHORTSTIKSN",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#08080a",
+  "theme_color": "#09090b",
+  "icons": [
+    {
+      "src": "assets/shortstiksn-logo.jpeg",
+      "sizes": "any",
+      "type": "image/jpeg",
+      "purpose": "any maskable"
+    }
+  ]
+}

@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#09090b">
+<meta name="description" content="SHORTSTIKSN — découvre et partage des vidéos du monde entier.">
+<link rel="manifest" href="manifest.webmanifest">
+<title>SHORTSTIKSN</title>
+<style>
+:root{--bg:#08080a;--panel:#141418;--panel2:#1d1d23;--red:#ff2538;--white:#f8f8fa;--muted:#a7a7b1;--line:#303038}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--white);font:15px/1.4 Inter,system-ui,-apple-system,Segoe UI,sans-serif}
+button,input{font:inherit}button{cursor:pointer;color:inherit}
+.app{min-height:100vh;max-width:1100px;margin:auto;display:grid;grid-template-columns:220px minmax(0,1fr) 270px;gap:22px;padding:18px}
+.sidebar,.rightbar{position:sticky;top:18px;height:calc(100vh - 36px)}
+.brand{display:flex;align-items:center;gap:10px;margin:2px 0 26px}.brand img{width:48px;height:48px;object-fit:cover;border-radius:14px;border:1px solid #4a171e}.brand b{font-size:20px;letter-spacing:-.7px}.brand b span{color:var(--red)}
+.nav{display:grid;gap:8px}.nav button{background:transparent;border:0;border-radius:13px;padding:13px;text-align:left;font-weight:650;color:#ddd;display:flex;gap:13px;align-items:center}.nav button.active,.nav button:hover{background:#241317;color:white}.ico{font-size:20px;width:24px;text-align:center}
+.primary{border:0;border-radius:999px;background:var(--red);font-weight:800;padding:13px 18px;color:white;box-shadow:0 8px 28px #ff253833}.sidebar .primary{width:100%;margin:22px 0}
+.user-mini{position:absolute;bottom:0;left:0;right:0;display:flex;align-items:center;gap:10px;padding:12px;border-top:1px solid var(--line)}
+.avatar{width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,#ff3348,#66111d);display:grid;place-items:center;font-weight:900}
+.muted{color:var(--muted);font-size:12px}
+main{min-width:0}.top{display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line);padding:5px 0 16px;margin-bottom:16px}.top h1{font-size:20px;margin:0}.tabs{display:flex;gap:18px}.tabs button{background:none;border:0;color:var(--muted);font-weight:700;padding:8px 0}.tabs button.active{color:white;border-bottom:2px solid var(--red)}
+.search{width:100%;background:var(--panel);border:1px solid var(--line);border-radius:13px;padding:12px 14px;color:white;margin-bottom:16px;outline:none}
+.feed{display:grid;gap:18px}.post{background:var(--panel);border:1px solid var(--line);border-radius:18px;overflow:hidden}.posthead{display:flex;align-items:center;gap:10px;padding:13px}.posthead .meta{flex:1}.posthead strong{font-size:14px}.follow{background:transparent;border:1px solid var(--red);color:#ff6674;border-radius:999px;padding:6px 12px;font-size:12px;font-weight:800}
+.video{height:430px;background:radial-gradient(circle at 70% 25%,#68212a,#17171c 45%,#08080a);display:grid;place-items:center;position:relative;overflow:hidden}.video video{width:100%;height:100%;object-fit:cover}.video .placeholder{text-align:center;padding:20px}.play{width:66px;height:66px;border-radius:50%;background:#ff2538e8;display:grid;place-items:center;margin:0 auto 14px;font-size:25px}.video small{color:#eee}.caption{padding:12px 14px 4px}.actions{display:flex;gap:19px;padding:10px 14px 14px}.actions button{border:0;background:none;font-weight:700;color:#ddd;padding:3px}.actions button.liked{color:var(--red)}.rightcard{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:15px;margin-bottom:15px}.rightcard h3{margin:0 0 12px;font-size:15px}.trend{padding:9px 0;border-bottom:1px solid var(--line)}.trend:last-child{border:0}.trend b{display:block;font-size:13px}.trend span{font-size:12px;color:var(--muted)}
+.mobilebar{display:none}.empty{padding:36px 20px;text-align:center;color:var(--muted);background:var(--panel);border-radius:16px}
+.modalback{position:fixed;inset:0;background:#000b;display:none;place-items:center;padding:18px;z-index:10}.modalback.show{display:grid}.modal{width:min(480px,100%);background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:20px}.modal h2{margin-top:0}.modal input,.modal textarea{width:100%;background:#09090c;color:white;border:1px solid var(--line);padding:12px;border-radius:10px;margin:7px 0 13px}.modal textarea{min-height:90px;resize:vertical}.modalrow{display:flex;justify-content:flex-end;gap:10px}.secondary{background:#292930;border:0;border-radius:999px;padding:11px 16px}
+@media(max-width:850px){.app{display:block;padding:12px 12px 82px}.sidebar,.rightbar{display:none}.top{padding-top:6px}.video{height:min(66vh,560px)}.mobilebar{position:fixed;z-index:5;bottom:0;left:0;right:0;display:flex;justify-content:space-around;background:#101014f5;border-top:1px solid var(--line);padding:10px 4px calc(10px + env(safe-area-inset-bottom));backdrop-filter:blur(12px)}.mobilebar button{background:none;border:0;color:#ddd;display:grid;gap:3px;justify-items:center;font-size:11px}.mobilebar span{font-size:21px}.search{margin-bottom:12px}}
+@media(min-width:851px){.top .mobilebrand{display:none}}
+</style>
+</head>
+<body>
+<div class="app">
+<aside class="sidebar">
+  <div class="brand"><img src="assets/shortstiksn-logo.jpeg" alt="Logo SHORTSTIKSN"><b>SHORTS<span>TIKSN</span></b></div>
+  <nav class="nav">
+    <button class="active" data-page="Pour toi"><span class="ico">⌂</span> Pour toi</button>
+    <button data-page="Découvrir"><span class="ico">⌕</span> Découvrir</button>
+    <button data-page="Abonnements"><span class="ico">♡</span> Abonnements</button>
+    <button data-page="Messages"><span class="ico">✉</span> Messages</button>
+    <button data-page="Notifications"><span class="ico">♧</span> Notifications</button>
+    <button data-page="Profil"><span class="ico">◉</span> Profil</button>
+  </nav>
+  <button class="primary" id="openUpload">＋ Publier une vidéo</button>
+  <div class="user-mini"><div class="avatar">S</div><div><b>@shortstiksn</b><div class="muted">Compte démo</div></div></div>
+</aside>
+<main>
+  <div class="top"><div><h1>SHORTSTIKSN</h1><div class="muted">Les vidéos du monde entier 🇸🇳</div></div><div class="tabs"><button class="active" data-feed="Pour toi">Pour toi</button><button data-feed="Abonnements">Abonnements</button></div></div>
+  <input class="search" id="search" placeholder="⌕  Rechercher des vidéos, créateurs, hashtags…">
+  <section class="feed" id="feed">
+    <article class="post" data-tags="senegal culture danse">
+      <div class="posthead"><div class="avatar">SN</div><div class="meta"><strong>@decouverte.sn</strong><div class="muted">Dakar, Sénégal · il y a 2 h</div></div><button class="follow">Suivre</button></div>
+      <div class="video"><div class="placeholder"><div class="play">▶</div><b>Bienvenue sur SHORTSTIKSN</b><br><small>Le monde se partage en vidéos.</small></div></div>
+      <div class="caption"><b>@decouverte.sn</b> Bienvenue dans la communauté ! 🇸🇳 #ShortsTikSN #Senegal</div>
+      <div class="actions"><button class="like">♡ <span>1 204</span></button><button class="comment">▢ 86</button><button class="share">↗ Partager</button></div>
+    </article>
+    <article class="post" data-tags="voyage monde">
+      <div class="posthead"><div class="avatar">W</div><div class="meta"><strong>@world.creator</strong><div class="muted">Créateur · il y a 5 h</div></div><button class="follow">Suivre</button></div>
+      <div class="video"><div class="placeholder"><div class="play">▶</div><b>Ton prochain souvenir commence ici</b><br><small>Publie ta première vidéo.</small></div></div>
+      <div class="caption"><b>@world.creator</b> Partage ton talent avec le monde entier 🌍</div>
+      <div class="actions"><button class="like">♡ <span>568</span></button><button class="comment">▢ 32</button><button class="share">↗ Partager</button></div>
+    </article>
+  </section>
+</main>
+<aside class="rightbar">
+  <div class="rightcard"><h3>À la une 🔥</h3><div class="trend"><b>#ShortsTikSN</b><span>Rejoins la communauté</span></div><div class="trend"><b>#Senegal</b><span>Culture et découvertes</span></div><div class="trend"><b>#PourToi</b><span>Les tendances du moment</span></div></div>
+  <div class="rightcard"><h3>Bienvenue !</h3><p class="muted">Une nouvelle scène pour les créateurs du monde entier. Publie, découvre et partage.</p><button class="primary" id="rightUpload">Créer une vidéo</button></div>
+  <p class="muted">© 2026 SHORTSTIKSN · Prototype de démonstration</p>
+</aside>
+</div>
+<nav class="mobilebar"><button data-page="Pour toi"><span>⌂</span>Accueil</button><button data-page="Découvrir"><span>⌕</span>Découvrir</button><button id="mobileUpload"><span style="color:#ff4052">⊕</span>Publier</button><button data-page="Messages"><span>✉</span>Messages</button><button data-page="Profil"><span>◉</span>Profil</button></nav>
+<div class="modalback" id="modalBack"><div class="modal" role="dialog" aria-modal="true"><h2 id="modalTitle">Publier une vidéo</h2><div id="modalBody"></div><div class="modalrow"><button class="secondary" id="closeModal">Annuler</button><button class="primary" id="modalAction">Continuer</button></div></div></div>
+<script>
+const $=s=>document.querySelector(s), $$=s=>document.querySelectorAll(s);
+const back=$('#modalBack'), body=$('#modalBody'), title=$('#modalTitle'), action=$('#modalAction');
+function modal(t,content,fn,label='Valider'){title.textContent=t;body.innerHTML=content;action.textContent=label;back.classList.add('show');action.onclick=()=>fn&&fn()}
+function close(){back.classList.remove('show')}
+$('#closeModal').onclick=close;back.addEventListener('click',e=>{if(e.target===back)close()});
+function upload(){modal('Publier une vidéo',`<label class="muted">Choisis une vidéo depuis ton appareil</label><input id="videoFile" type="file" accept="video/*"><label class="muted">Légende</label><textarea id="videoCaption" placeholder="Décris ta vidéo…"></textarea><p class="muted">Démo locale : la vidéo sera affichée dans cette session uniquement.</p>`,()=>{const f=$('#videoFile').files[0];if(!f){alert('Choisis une vidéo pour continuer.');return}const url=URL.createObjectURL(f),cap=$('#videoCaption').value;const card=document.createElement('article');card.className='post';card.innerHTML=`<div class="posthead"><div class="avatar">S</div><div class="meta"><strong>@shortstiksn</strong><div class="muted">À l’instant · Publication locale</div></div></div><div class="video"><video controls playsinline src="${url}"></video></div><div class="caption"><b>@shortstiksn</b> ${escapeHtml(cap)}</div><div class="actions"><button class="like">♡ <span>0</span></button><button class="comment">▢ 0</button><button class="share">↗ Partager</button></div>`;$('#feed').prepend(card);wire(card);close();card.scrollIntoView({behavior:'smooth'})},'Publier')}
+function escapeHtml(s){return s.replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+function wire(root=document){root.querySelectorAll('.like').forEach(b=>{if(b.dataset.wired)return;b.dataset.wired=1;b.onclick=()=>{b.classList.toggle('liked');const n=b.querySelector('span');if(n){let v=parseInt(n.textContent.replace(/\D/g,''))||0;n.textContent=b.classList.contains('liked')?v+1:v-1}}});
+root.querySelectorAll('.follow').forEach(b=>{if(b.dataset.wired)return;b.dataset.wired=1;b.onclick=()=>{b.textContent=b.textContent==='Suivre'?'Abonné':'Suivre';b.style.background=b.textContent==='Abonné'?'#32151a':'transparent'}});
+root.querySelectorAll('.comment').forEach(b=>{if(b.dataset.wired)return;b.dataset.wired=1;b.onclick=()=>modal('Commentaires',`<p class="muted">Les commentaires seront disponibles après connexion au serveur SHORTSTIKSN.</p><input placeholder="Écris un commentaire…" disabled>`,close,'Fermer')});
+root.querySelectorAll('.share').forEach(b=>{if(b.dataset.wired)return;b.dataset.wired=1;b.onclick=()=>{if(navigator.share)navigator.share({title:'SHORTSTIKSN',text:'Découvre SHORTSTIKSN !'}).catch(()=>{});else modal('Partager',`<p>Copie le nom de la plateforme : <b>SHORTSTIKSN</b></p>`,close,'Fermer')}});
+}
+wire();
+$('#openUpload').onclick=upload;$('#rightUpload').onclick=upload;$('#mobileUpload').onclick=upload;
+$$('[data-page]').forEach(b=>b.onclick=()=>{const p=b.dataset.page;if(p==='Messages'||p==='Notifications'||p==='Profil')modal(p,`<p class="muted">Cette section est prévue dans la version connectée de SHORTSTIKSN. Les comptes et données ne sont pas encore reliés à un serveur.</p>`,close,'Compris');else{modal(p,`<p class="muted">Section ${p} sélectionnée. Le fil de démonstration reste affiché dans cette première version.</p>`,close,'Compris')}});
+$$('[data-feed]').forEach(b=>b.onclick=()=>{$$('[data-feed]').forEach(x=>x.classList.toggle('active',x===b));});
+$('#search').addEventListener('input',e=>{const q=e.target.value.toLowerCase();$$('.post').forEach(p=>p.style.display=(p.innerText+' '+p.dataset.tags).toLowerCase().includes(q)?'':'none')});
+if('serviceWorker' in navigator && location.protocol.startsWith('http'))navigator.serviceWorker.register('./sw.js').catch(()=>{});
+</script>
+</body></html>
