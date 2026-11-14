@@ -1,0 +1,8 @@
+{
+  "appId": "com.shortstiksn.app",
+  "appName": "SHORTSTIKSN",
+  "webDir": "www",
+  "server": {
+    "androidScheme": "https"
+  }
+}
